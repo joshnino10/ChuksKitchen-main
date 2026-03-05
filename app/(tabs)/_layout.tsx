@@ -21,8 +21,8 @@ export default function Tablayout() {
 
         tabBarStyle: {
           position: "absolute",
-          marginHorizontal: 20,
-          bottom: 30,
+          marginHorizontal: 16,
+          bottom: 20,
           borderRadius: 2000,
           justifyContent: "center",
           alignItems: "center",

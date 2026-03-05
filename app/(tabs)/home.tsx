@@ -1,5 +1,7 @@
+import Category from '@/Component/HomeDetails/Category'
 import FastFood from '@/Component/HomeDetails/FastFood'
 import HomeHeader from '@/Component/HomeDetails/HomeHeader'
+import PopularHomeDishes from '@/Component/HomeDetails/PopularHomeDishes'
 import Search from '@/Component/HomeDetails/Search'
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
@@ -15,7 +17,8 @@ export default function Home() {
         <HomeHeader />
         <Search/>
         <FastFood/>
-
+        <Category/>
+        <PopularHomeDishes/>
     
       </ScrollView>
     </SafeAreaView>
