@@ -1,10 +1,11 @@
 import Category from '@/Component/HomeDetails/Category'
+import DiscountOffer from '@/Component/HomeDetails/DiscountOffer'
 import FastFood from '@/Component/HomeDetails/FastFood'
 import HomeHeader from '@/Component/HomeDetails/HomeHeader'
 import PopularHomeDishes from '@/Component/HomeDetails/PopularHomeDishes'
 import Search from '@/Component/HomeDetails/Search'
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet,  } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <Search/>
         <FastFood/>
         <Category/>
+        <DiscountOffer/>
         <PopularHomeDishes/>
     
       </ScrollView>
