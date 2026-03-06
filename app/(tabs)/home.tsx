@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   scrollContent: {
-    paddingBottom: 100,
+    paddingBottom: 80,
   },
 })

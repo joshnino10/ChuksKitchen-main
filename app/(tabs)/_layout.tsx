@@ -13,7 +13,7 @@ export default function Tablayout() {
 
         tabBarBackground: () => (
           <BlurView
-            intensity={20}
+            intensity={9}
             tint="light"
             style={styles.BlurView}
           />
@@ -76,7 +76,7 @@ export default function Tablayout() {
        name="explore" 
         options={{
           title:'Explore',
-          tabBarIcon: ({focused}) =>(
+          tabBarIcon: ({focused}) => (
             <Image
              source={
               focused? require('../../assets/images/explore active icon.png'):
@@ -134,7 +134,5 @@ const styles = StyleSheet.create({
   icon:{
     width:24,
     height:24
-  }
-
-
+  },
 })

@@ -1,10 +1,9 @@
-import React from 'react'
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { populardishes } from '../PopularDishes/Populardishes'
-import EvilIcons from '@expo/vector-icons/EvilIcons';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Entypo from '@expo/vector-icons/Entypo';
-
+import React from "react";
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { populardishes } from "../PopularDishes/Populardishes";
+import EvilIcons from "@expo/vector-icons/EvilIcons";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Entypo from "@expo/vector-icons/Entypo";
 
 export default function PopularHomeDishes() {
 
@@ -16,36 +15,36 @@ export default function PopularHomeDishes() {
         <View style={styles.textContainer}>
           <Text style={styles.foodName}>{item.Food}</Text>
 
-          <View style={{flexDirection:'row', gap:5, alignItems:'center'}}>
-           <EvilIcons name="clock" size={15} color="#8D8781" />
+          <View style={styles.row}>
+            <EvilIcons name="clock" size={15} color="#8D8781" />
             <Text style={styles.time}>{item.Time}</Text>
           </View>
 
-          <View style={{flexDirection:'row', gap:5, alignItems:'center', marginTop:5}}>
-          <AntDesign name="star" size={12} color="#FE8300" /> 
+          <View style={[styles.row, { marginTop: 5 }]}>
+            <AntDesign name="star" size={12} color="#FE8300" />
             <Text style={styles.rate}>{item.Rate}</Text>
           </View>
 
           <View style={styles.priceContainer}>
             <Text style={styles.price}>{item.Price}</Text>
-          <TouchableOpacity style={styles.AddContainer}>
-            <Entypo name="plus" size={20} color="#FFFFFF" />
 
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.addContainer}>
+              <Entypo name="plus" size={16} color="#FFFFFF" />
+            </TouchableOpacity>
           </View>
-         
+
         </View>
       </View>
-    )
-  }
+    );
+  };
 
   return (
-    <View style={styles.Container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.popularDishes}>Popular Dishes</Text>
 
-        <TouchableOpacity >
-          <Text style={styles.viewall}>View All</Text>
+        <TouchableOpacity>
+          <Text style={styles.viewAll}>View All</Text>
         </TouchableOpacity>
       </View>
 
@@ -53,105 +52,114 @@ export default function PopularHomeDishes() {
         data={populardishes.slice(0, 6)}
         renderItem={renderItem}
         horizontal
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => String(item.id)}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.list}
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  Container:{
-    marginTop:50
+  container: {
+    marginTop: 50,
   },
 
-  header:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    paddingHorizontal:16
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 16,
   },
 
-  popularDishes:{
-    fontFamily: 'MontserratSemiBold',
-    fontSize:14,
-    fontWeight: '600'
+  popularDishes: {
+    fontFamily: "MontserratSemiBold",
+    fontSize: 14,
   },
 
-  viewall:{
-    fontFamily: 'MontserratSemiBold',
-    fontSize:12,
-    fontWeight: '600',
-    color: '#FE8300'
+  viewAll: {
+    fontFamily: "MontserratSemiBold",
+    fontSize: 12,
+    color: "#FE8300",
   },
 
-  list:{
-    paddingLeft:16,
-    paddingTop:16
+  list: {
+    paddingLeft: 16,
+    paddingTop: 16,
+    paddingBottom: 20,
   },
 
-  card:{
-    width:160,
-    marginRight:16,
-    backgroundColor:'#F2EBE3',
-    borderRadius:20,
-    overflow:'hidden'
+  card: {
+    width: 160,
+    marginRight: 16,
+    marginBottom: 10,
+    backgroundColor: "#F2EBE3",
+    borderRadius: 20,
+
+    // iOS shadow
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+
+    // Android shadow
+    elevation: 8,
   },
 
-  image:{
-    width:'100%',
-    height:110,
-    borderRadius:20,
-    resizeMode:'cover'
+  image: {
+    width: "100%",
+    height: 110,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    resizeMode: "cover",
   },
 
-  textContainer:{
-    padding:10,
-  
+  textContainer: {
+    padding: 10,
   },
 
-  foodName:{
-    fontFamily: 'MontserratSemiBold',
-    fontSize:13,
-    fontWeight:'600',
-    marginBottom:4
-  },
-  time:{
-    fontFamily: 'MontserratMedium',
-    fontSize:12,
-   
-    color: '#8D8781'
-    
+  foodName: {
+    fontFamily: "MontserratSemiBold",
+    fontSize: 13,
+    marginBottom: 4,
   },
 
-  rate:{
-      fontFamily: 'MontserratMedium',
-      fontSize:12,
-      marginBottom:4,
-      color: '#8D8781'
-    },
-
-    priceContainer:{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        alignItems:'center'
-
-    },
-  price:{
-    fontFamily: 'MontserratSemiBold',
-    fontSize:16,
-    marginBottom:4,
-    fontWeight:'600',
-   
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
   },
-  AddContainer:{
-    backgroundColor:'#FE8300',
-    height:22,
-    width:22,
-    marginBottom:4,
-    borderRadius:20,
-    justifyContent: 'center',
-    alignItems:'center'
-  }
-})
+
+  time: {
+    fontFamily: "MontserratMedium",
+    fontSize: 12,
+    color: "#8D8781",
+  },
+
+  rate: {
+    fontFamily: "MontserratMedium",
+    fontSize: 12,
+    color: "#8D8781",
+  },
+
+  priceContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 6,
+  },
+
+  price: {
+    fontFamily: "MontserratSemiBold",
+    fontSize: 16,
+  },
+
+  addContainer: {
+    backgroundColor: "#FE8300",
+    height: 26,
+    width: 26,
+    borderRadius: 13,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
