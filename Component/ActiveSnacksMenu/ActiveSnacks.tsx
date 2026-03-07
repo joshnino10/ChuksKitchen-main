@@ -13,8 +13,8 @@ export default function ActiveSwallowMenu() {
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        columnWrapperStyle= {{justifyContent: 'space-between', marginBottom:15}}
-        contentContainerStyle={{ paddingHorizontal: 16, paddingBottom:300}}
+        columnWrapperStyle= {{justifyContent: 'space-evenly', marginBottom:15}}
+        contentContainerStyle={{ paddingBottom:300}}
         renderItem={({ item,}) => <Card item={item} />}
       />
 

@@ -11,7 +11,7 @@ export default function ActiveSwallowMenu() {
         numColumns={2}
         scrollEnabled={false}
         keyExtractor={(item) => item.id}
-        columnWrapperStyle={{ justifyContent: 'space-between', marginBottom: 15 }}
+        columnWrapperStyle={{ justifyContent: 'space-evenly', marginBottom: 15 }}
         contentContainerStyle={styles.contentStyle}
         renderItem={({ item }) => <Card item={item}  />}
       />
@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
     marginTop:20
   },
   contentStyle:{
-    paddingRight: 16,
-    paddingLeft:16,
+  
     
   }
 })

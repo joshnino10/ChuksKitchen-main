@@ -13,7 +13,7 @@ export default function ActiveDrinksMenu() {
            scrollEnabled={false}
            showsHorizontalScrollIndicator={false}
            keyExtractor={(item) => item.id}
-           columnWrapperStyle= {{justifyContent: 'space-between', marginBottom:15}}
+           columnWrapperStyle= {{justifyContent: 'space-evenly', marginBottom:15}}
            contentContainerStyle={{ paddingHorizontal: 16, paddingBottom:300}}
            renderItem={({ item,}) => <Card item={item} />}
          />
