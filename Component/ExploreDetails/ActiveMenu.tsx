@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import ActiveRiceMenu from '../ActiveRiceMenu/ActiveRiceMenu'
+import ActiveSwallowMenu from '../ActiveSwallowMenu/ActiveSwallowMenu'
 
 export default function ActiveMenu() {
 
@@ -45,12 +46,10 @@ export default function ActiveMenu() {
       </View>
 
       <View style={styles.ContentContainer}>
-        <ScrollView 
-          style={styles.scrollContent}
-          contentContainerStyle={{ paddingBottom: 80 }}
-        >
+      
           {ActiveTab === 'Rice' && <ActiveRiceMenu/>}
-        </ScrollView>
+          {ActiveTab === 'Swallow' && <ActiveSwallowMenu/>}
+       
       </View>
     </View>
   )
@@ -115,6 +114,7 @@ const styles = StyleSheet.create({
   },
 
   ContentContainer:{
+    marginBottom:80
 
   }
 })

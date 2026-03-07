@@ -8,5 +8,5 @@ export const ricemenu = [
         Time:'25-30Mins',
         Rate: '4.9',
         Price: '#4,500',
-    }
+    },
 ]

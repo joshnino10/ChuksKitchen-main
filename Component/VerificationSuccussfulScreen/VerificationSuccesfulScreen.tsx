@@ -1,13 +1,13 @@
-import { Image, StyleSheet, Text, View, StatusBar } from 'react-native'
-import React from 'react'
 import { useRouter } from 'expo-router'
+import React from 'react'
+import { Image, StatusBar, StyleSheet, Text, View } from 'react-native'
 import CustomButton from '../CustomButton/CustomButton'
 
 export default function VerificationSuccesfulScreen() {
   const router = useRouter()
 
   const handleStartOrdering = () => {
-    // router.replace() // change route if needed
+    router.replace('/(tabs)/home') 
   }
 
   return (
