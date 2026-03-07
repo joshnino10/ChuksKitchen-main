@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   contentStyle:{
     paddingRight: 16,
-    paddingLeft:21,
+    paddingLeft:16,
     
   }
 })

@@ -56,7 +56,7 @@ export default function   ActiveRiceMenu() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+   
   },
 
   header: {

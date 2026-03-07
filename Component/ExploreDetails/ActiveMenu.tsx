@@ -3,6 +3,7 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 
 import ActiveRiceMenu from '../ActiveRiceMenu/ActiveRiceMenu'
 import ActiveSwallowMenu from '../ActiveSwallowMenu/ActiveSwallowMenu'
+import ActiveSoupMenu from '../ActiveSoupMenu/ActiveSoupMenu'
 
 export default function ActiveMenu() {
 
@@ -49,6 +50,7 @@ export default function ActiveMenu() {
       
           {ActiveTab === 'Rice' && <ActiveRiceMenu/>}
           {ActiveTab === 'Swallow' && <ActiveSwallowMenu/>}
+          {ActiveTab === 'Soup' && <ActiveSoupMenu/>}
        
       </View>
     </View>
