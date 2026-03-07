@@ -24,7 +24,7 @@ export default function ActiveMenu() {
       <Text style={styles.Title}>Explore Our Menu</Text>
 
       <View style={styles.row}>
-        {menuTab.map((item)=>{
+        {menuTab.map((item) => {
 
           const isActive = ActiveTab === item.food
 
@@ -65,7 +65,7 @@ export default function ActiveMenu() {
 const styles = StyleSheet.create({
   Container:{
     marginTop:20,
-    marginBottom:8
+  
   },
 
   Title:{
@@ -82,8 +82,7 @@ const styles = StyleSheet.create({
     justifyContent:'space-between'
   },
 
-  menuItem:{
-    
+  menuItem:{  
     paddingHorizontal:16,
     marginBottom:20,
     alignItems:'center'
