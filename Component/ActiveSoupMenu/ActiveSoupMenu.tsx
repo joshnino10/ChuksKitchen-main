@@ -8,6 +8,8 @@ export default function ActiveSoupMenu() {
     <View>
         <FlatList
          data={soupmenu}
+         numColumns={2}
+         scrollEnabled={false}
          keyExtractor={(item)=> item.id}
          renderItem={({item})=> <Card item={item}/>}
          contentContainerStyle={styles.list}

@@ -45,7 +45,8 @@ export default function   ActiveRiceMenu() {
       <FlatList
         data={ricemenu}
         renderItem={renderItem}
-        horizontal
+        numColumns={2}
+        scrollEnabled={false}
         keyExtractor={(item) => String(item.id)}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.list}

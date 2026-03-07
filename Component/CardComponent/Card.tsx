@@ -38,6 +38,7 @@ export default function Card({ item }) {
 const styles = StyleSheet.create({
   card: {
     width: 160,
+
     marginRight: 16,
     marginBottom: 10,
     backgroundColor: "#F2EBE3",
@@ -53,9 +54,8 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 110,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
     resizeMode: "cover",
+    borderRadius:20
   },
 
   textContainer: {

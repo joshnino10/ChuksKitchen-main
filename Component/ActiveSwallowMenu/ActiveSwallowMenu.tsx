@@ -1,14 +1,15 @@
-import { FlatList, StyleSheet, View } from 'react-native'
 import React from 'react'
+import { FlatList, StyleSheet, View } from 'react-native'
 import Card from '../CardComponent/Card'
 import { swallowmenu } from './SwallowMenu'
 
-export default function FullMenu() {
+export default function ActiveSwallowMenu() {
   return (
     <View style={styles.container}>
       <FlatList
         data={swallowmenu}
         numColumns={2}
+        scrollEnabled={false}
         keyExtractor={(item) => item.id}
         columnWrapperStyle={{ justifyContent: 'space-between', marginBottom: 15 }}
         contentContainerStyle={styles.contentStyle}
