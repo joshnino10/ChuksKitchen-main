@@ -1,7 +1,14 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { useRouter } from 'expo-router'
 
 export default function Category() {
+
+  const router = useRouter()
+
+  const gotoSearch = ()=> {
+    router.push('/(tabs)/explore')
+  }
 
   const category = [
     {
@@ -34,16 +41,16 @@ export default function Category() {
   return (
     <View style={styles.Container}>
       
-      {/* Header */}
+    
       <View style={styles.header}>
         <Text style={styles.categoryText}>Category</Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={gotoSearch}>
           <Text style={styles.seeAll}>See All</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Category Items */}
+    
       <View style={styles.row}>
         {category.map((item) => (
           <TouchableOpacity key={item.id} style={styles.content}>

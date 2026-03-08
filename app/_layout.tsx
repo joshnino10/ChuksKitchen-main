@@ -18,6 +18,7 @@ import {
   Montserrat_800ExtraBold,
 } from "@expo-google-fonts/montserrat";
 import { useEffect, useState } from "react";
+import { CartProvider } from "@/context/CartContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -58,9 +59,12 @@ export default function RootLayout() {
 
 
   return (
+    <CartProvider>
+
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="welcomeSplashScreen" />
     </Stack>
+    </CartProvider>
   );
 }

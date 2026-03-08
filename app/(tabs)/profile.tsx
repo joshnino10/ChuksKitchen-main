@@ -1,7 +1,7 @@
 import AccountProfile from '@/Component/AccountProfile/AccountProfile'
 import AccountSections from '@/Component/AccountProfile/AccountSections'
 import React from 'react'
-import { ScrollView, StyleSheet, Dimensions } from 'react-native'
+import { ScrollView, StyleSheet, } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
@@ -20,10 +20,10 @@ export default function Profile() {
 const styles = StyleSheet.create({
   SafeArea:{
     flex:1,
-    backgroundColor:'white'
+    backgroundColor:'#FFFFFF'
   },
   scrollContent:{
     paddingBottom: 80,
  
-  }
+  },
 })

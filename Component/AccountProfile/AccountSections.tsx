@@ -60,7 +60,7 @@ export default function AccountSections() {
       SectionsName: "App Settings",
       items: [
         {
-          icon: require("../../assets/images/my order icon.png"),
+          icon: require("../../assets/images/dark icon.png"),
           title: "Dark Mode",
           subtitle: "Standard bright look",
           type: "switch",
@@ -68,7 +68,7 @@ export default function AccountSections() {
           onValueChange: setDarkMode,
         },
         {
-          icon: require("../../assets/images/payment icon.png"),
+          icon: require("../../assets/images/notification icon.png"),
           title: "Notifications",
           subtitle: "Order status & promos",
           type: "switch",
