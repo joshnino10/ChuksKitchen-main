@@ -16,6 +16,7 @@ import { useRouter } from 'expo-router';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useCart, CartItem } from '../../context/CartContext';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { goBack } from 'expo-router/build/global-state/routing';
 
 export default function Cartitem() {
   const { cartItems, updateQuantity, removeFromCart, clearCart, totalPrice } = useCart();
@@ -83,8 +84,10 @@ export default function Cartitem() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
+      <TouchableOpacity onPress={()=> router.back()}>
 
-      <Ionicons name="chevron-back" size={24} color="black" />
+        <Ionicons name="chevron-back" size={24} color="black" />
+      </TouchableOpacity>
         {cartItems.length > 0 && (
           <TouchableOpacity onPress={handleClearCart}>
             <Text style={styles.clearButton}>Clear All</Text>
