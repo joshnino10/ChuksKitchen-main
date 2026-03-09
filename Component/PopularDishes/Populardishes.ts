@@ -14,7 +14,7 @@ export const populardishes = [
   {
     id: "2",
     image: require("../../assets/images/beef pepper soup.png"),
-    SingleImage: require('../../assets/images/single jollof image.png'),
+    SingleImage: require('../../assets/images/single beef pepper image.png'),
     Food: "Beef Pepper Soup",
     Time: "30-45Mins",
     Rate: "4.8",
@@ -26,7 +26,7 @@ export const populardishes = [
   {
     id: "3",
     image: require("../../assets/images/yam chips.png"),
-    SingleImage: require('../../assets/images/single jollof image.png'),
+    SingleImage: require('../../assets/images/simgleYam and chips.png'),
     Food: "Yam chips & Fufu",
     Time: "20-25Mins",
     Rate: "4.5",
