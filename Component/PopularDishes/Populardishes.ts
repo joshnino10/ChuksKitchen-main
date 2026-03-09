@@ -2,6 +2,7 @@ export const populardishes = [
   {
     id: "1",
     image: require("../../assets/images/jollof rice and chicken.png"),
+    SingleImage: require('../../assets/images/single jollof image.png'),
     Food: "Jollof rice & Chicken",
     Time: "25-30Mins",
     Rate: "4.9 ",
@@ -13,6 +14,7 @@ export const populardishes = [
   {
     id: "2",
     image: require("../../assets/images/beef pepper soup.png"),
+    SingleImage: require('../../assets/images/single jollof image.png'),
     Food: "Beef Pepper Soup",
     Time: "30-45Mins",
     Rate: "4.8",
@@ -24,6 +26,7 @@ export const populardishes = [
   {
     id: "3",
     image: require("../../assets/images/yam chips.png"),
+    SingleImage: require('../../assets/images/single jollof image.png'),
     Food: "Yam chips & Fufu",
     Time: "20-25Mins",
     Rate: "4.5",
@@ -35,6 +38,7 @@ export const populardishes = [
   {
     id: "4",
     image: require("../../assets/images/egusi and fufu.png"),
+    SingleImage: require('../../assets/images/single jollof image.png'),
     Food: "Egusi & Fufu",
     Time: "25-30Mins",
     Rate: "4.7",
@@ -46,6 +50,7 @@ export const populardishes = [
   {
     id: "5",
     image: require("../../assets/images/beef suya.png"),
+    SingleImage: require('../../assets/images/single jollof image.png'),
     Food: "Beef Suya",
     Time: "25-30Mins",
     Rate: "4.9",
@@ -55,6 +60,7 @@ export const populardishes = [
   {
     id: "6",
     image: require("../../assets/images/small chops.png"),
+    SingleImage: require('../../assets/images/single jollof image.png'),
     Food: "Small Chops",
     Time: "25-30Mins",
     Rate: "4.9",

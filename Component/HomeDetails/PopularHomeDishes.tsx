@@ -4,10 +4,12 @@ import { populardishes } from "../PopularDishes/Populardishes";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
+import { useRouter } from "expo-router";
 
 export default function PopularHomeDishes() {
+  const router = useRouter();
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item}:any) => {
     return (
       <View style={styles.card}>
         <Image source={item.image} style={styles.image} />
@@ -28,11 +30,13 @@ export default function PopularHomeDishes() {
           <View style={styles.priceContainer}>
             <Text style={styles.price}>{item.Price}</Text>
 
-            <TouchableOpacity style={styles.addContainer}>
+            <TouchableOpacity
+              style={styles.addContainer}
+              onPress={() => router.push(`/populardishes/${item.id}`)}
+            >
               <Entypo name="plus" size={16} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
-
         </View>
       </View>
     );
@@ -96,13 +100,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#F2EBE3",
     borderRadius: 20,
 
-    // iOS shadow
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.2,
     shadowRadius: 8,
 
-    // Android shadow
     elevation: 8,
   },
 
