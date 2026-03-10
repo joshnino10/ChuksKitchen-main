@@ -38,7 +38,7 @@ export const populardishes = [
   {
     id: "4",
     image: require("../../assets/images/egusi and fufu.png"),
-    SingleImage: require('../../assets/images/single jollof image.png'),
+    SingleImage: require('../../assets/images/single fufu .png'),
     Food: "Egusi & Fufu",
     Time: "25-30Mins",
     Rate: "4.7",
@@ -50,7 +50,7 @@ export const populardishes = [
   {
     id: "5",
     image: require("../../assets/images/beef suya.png"),
-    SingleImage: require('../../assets/images/single jollof image.png'),
+    SingleImage: require('../../assets/images/single beef suya.png'),
     Food: "Beef Suya",
     Time: "25-30Mins",
     Rate: "4.9",
@@ -60,7 +60,7 @@ export const populardishes = [
   {
     id: "6",
     image: require("../../assets/images/small chops.png"),
-    SingleImage: require('../../assets/images/single jollof image.png'),
+    SingleImage: require('../../assets/images/single small chops.png'),
     Food: "Small Chops",
     Time: "25-30Mins",
     Rate: "4.9",

@@ -125,7 +125,7 @@ import React, {
         return sum + price * item.quantity;
       }, 0);
   
-      return `$${total.toFixed(2)}`;
+      return `#${total.toFixed(1)}`;
     }, [cartItems]);
   
     return (
