@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, } from 'react-native'
 import React from 'react'
 import Displayaddedtocart from '@/Component/AddedToCartDisplay/Displayaddedtocart'
 import { SafeAreaView } from 'react-native-safe-area-context'
