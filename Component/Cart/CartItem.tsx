@@ -349,16 +349,23 @@ const styles = StyleSheet.create({
   emptyCartContainer: {
     fontFamily: 'poppinsSemiBold',
     flex: 1,
+    paddingHorizontal:20,
+    alignSelf:'center',
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   emptyCartText: {
-    fontSize: 22,
+    fontFamily:'poppinsSemiBold',
+    fontWeight:'600',
+    fontSize: 24,
     marginTop: 10
   },
 
   emptyCartSubText: {
+    fontFamily:'poppinsMedium',
+    fontWeight:"600",
+    fontSize:18,
     color: '#9B9A9A',
     marginTop: 10,
     textAlign: 'center'
@@ -366,12 +373,15 @@ const styles = StyleSheet.create({
 
   shopButton: {
     marginTop: 20,
+    fontFamily:'poppinsMedium',
     backgroundColor: '#FE8300',
     padding: 12,
     borderRadius: 10
   },
 
   shopButtonText: {
+    fontFamily:'poppinsSemiBold',
+    fontSize:20,
     color: '#fff',
     fontWeight: 'bold'
   }

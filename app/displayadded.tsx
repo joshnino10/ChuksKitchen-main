@@ -6,7 +6,6 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 export default function Displayadded() {
   return (
     <SafeAreaView style={styles.SafeArea}>
-      
       <Displayaddedtocart/>
     </SafeAreaView>
   )
