@@ -172,7 +172,7 @@ export default function Cartitem() {
             <View style={styles.priceRow}>
               <Text style={styles.priceLabel}>Delivery Fee</Text>
               <Text style={styles.priceValue}>
-                {deliveryFee === 0 ? 'Free' : `₦${deliveryFee}`}
+                {deliveryFee === 0 ? 'Free' : `#${deliveryFee}`}
               </Text>
             </View>
 
@@ -347,6 +347,7 @@ const styles = StyleSheet.create({
   },
 
   emptyCartContainer: {
+    fontFamily: 'poppinsSemiBold',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'

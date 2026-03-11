@@ -83,6 +83,7 @@ export default function SinglePopularDishes() {
       quantity: count,
     });
     setCount(0);
+    router.push('/displayadded')
   };
 
   const goToCart = () => router.push("/orders");
@@ -175,7 +176,7 @@ export default function SinglePopularDishes() {
             onPress={handleAddToCart}
             disabled={count === 0}
           >
-            <Text style={styles.Addtext}>{alreadyInCart ? "Add More" : "Add to Cart"}</Text>
+            <Text style={styles.Addtext}>{alreadyInCart ? "Add to Cart" : "Add to Cart"}</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>

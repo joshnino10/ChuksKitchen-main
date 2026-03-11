@@ -9,7 +9,7 @@ import React, {
   import AsyncStorage from '@react-native-async-storage/async-storage';
   import { ImageSourcePropType } from 'react-native';
   
-  // Types
+  
   export type CartItem = {
     id: string;
     name: string;
