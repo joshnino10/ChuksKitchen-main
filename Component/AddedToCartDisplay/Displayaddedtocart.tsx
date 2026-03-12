@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef } from 'react';
-import { Animated, Image, StyleSheet, View, Easing } from 'react-native';
+import { Animated,  StyleSheet, View, Easing } from 'react-native';
 
 export default function Displayaddedtocart() {
   const router = useRouter();

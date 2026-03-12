@@ -17,6 +17,10 @@ export default function CheckoutOrder() {
   const { totalPrice } = useCart();
   const router = useRouter();
 
+  const gotoOrderConfirmed = ()=>{
+    router.push('/orderconfirm')
+  }
+
   const deliveryFee = 0;
   const total = totalPrice + deliveryFee;
 
@@ -61,7 +65,7 @@ export default function CheckoutOrder() {
 
         <TouchableOpacity
           style={styles.checkoutButton}
-        //   onPress={() => router.push('/payment')}
+          onPress={gotoOrderConfirmed}
         >
           <Text style={styles.checkoutText}>Confirm Order</Text>
         </TouchableOpacity>
