@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Image, StyleSheet } from 'react-native';
+import { Image, Platform, StyleSheet } from 'react-native';
 
 export default function Tablayout() {
   return (
@@ -21,13 +21,14 @@ export default function Tablayout() {
 
         tabBarStyle: {
           position: "absolute",
-          marginHorizontal: 16,
-          bottom: 20,
+          marginHorizontal: Platform.OS === 'ios'? 16:20,
+          bottom: Platform.OS === 'ios'? 20:17,
+          height: Platform.OS === 'android'? 75:73,
           borderRadius: 2000,
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: "#F2EBE333",
-          paddingTop: 10,
+          paddingTop: Platform.OS === 'ios'? 10:5,
           borderWidth: 0.3,
 
           shadowColor: "#000",

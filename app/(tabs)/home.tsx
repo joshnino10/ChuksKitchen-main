@@ -5,12 +5,13 @@ import HomeHeader from '@/Component/HomeDetails/HomeHeader'
 import PopularHomeDishes from '@/Component/HomeDetails/PopularHomeDishes'
 import Search from '@/Component/HomeDetails/Search'
 import React from 'react'
-import { ScrollView, StyleSheet,  } from 'react-native'
+import { Platform, ScrollView, StatusBar, StyleSheet,  } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Home() {
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="white"/>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: 'white',
+    paddingTop: Platform.OS === 'ios'? 0:10,
   },
   scrollContent: {
     paddingBottom: 80,

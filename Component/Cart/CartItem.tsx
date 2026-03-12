@@ -22,6 +22,10 @@ export default function Cartitem() {
 
   const deliveryFee = 0;
   const total = totalPrice + deliveryFee;
+  
+  const gotoCheckout = ()=> {
+    router.push('/checkoutorder')
+  }
 
   const handleClearCart = () => {
     Alert.alert(
@@ -183,7 +187,7 @@ export default function Cartitem() {
               <Text style={styles.totalAmount}>{total}</Text>
             </View>
 
-            <TouchableOpacity style={styles.checkoutButton}>
+            <TouchableOpacity onPress={gotoCheckout}  style={styles.checkoutButton}>
               <Text style={styles.checkoutText}>Checkout</Text>
             </TouchableOpacity>
 
