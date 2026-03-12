@@ -1,13 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Checkout from '@/Component/Checkout/Checkout'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function CheckoutOrder() {
   return (
-    <View>
+    <SafeAreaView style={styles.safearea}>
      <Checkout/>
-    </View>
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    safearea:{
+        flex:1,
+        backgroundColor:'white',
+      
+    }
+})
