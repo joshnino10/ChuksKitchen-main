@@ -1,13 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import ConfirmOrder from '@/Component/OrderConfirmed/ConfirmOrder'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Orderconfirm() {
   return (
-    <View>
+    <SafeAreaView style={styles.SafeArea}>
       <ConfirmOrder/>
-    </View>
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  SafeArea:{
+    flex:1,
+    backgroundColor:'white',
+  }
+
+})

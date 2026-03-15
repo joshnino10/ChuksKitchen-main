@@ -14,6 +14,7 @@ import React, {
     id: string;
     name: string;
     price: string;
+    time: string;
     image: ImageSourcePropType;
     quantity: number;
   };
