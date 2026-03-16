@@ -25,6 +25,7 @@ import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
+  runOnJS,
 } from "react-native-reanimated";
 import { useRouter, useLocalSearchParams } from "expo-router";
 
@@ -42,9 +43,9 @@ export default function SinglePopularDishes() {
   const [count, setCount] = useState<number>(0);
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
-  const flatListRef = useRef<FlatList>(null);
+  const flatListRef = useRef<FlatList<DishType>>(null);
 
-  // Find the index of the dish by ID
+  // Scroll to initial dish
   useEffect(() => {
     if (id) {
       const index = populardishes.findIndex((p) => String(p.id) === id);
@@ -60,24 +61,25 @@ export default function SinglePopularDishes() {
     }
   }, [id]);
 
-  const currentDish = populardishes[activeIndex];
-
   const incrementCount = () => setCount((prev) => prev + 1);
   const decrementCount = () => setCount((prev) => Math.max(prev - 1, 0));
 
-  const scrollHandler = useAnimatedScrollHandler((event) => {
-    scrollX.value = event.contentOffset.x;
+  // Animated scroll handler
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollX.value = event.contentOffset.x;
+      const index = Math.round(event.contentOffset.x / (ITEM_WIDTH + SPACING));
+      runOnJS(setActiveIndex)(index);
+    },
   });
 
-  const renderItem = ({ item, index }: { item: DishType; index: number }) => (
-    <CarouselItem item={item} index={index} scrollX={scrollX} />
-  );
+  const currentDish = populardishes[activeIndex] ?? populardishes[0];
 
   const alreadyInCart = isInCart(currentDish.id);
   const cartQuantity = getItemQuantity(currentDish.id);
 
   const handleAddToCart = () => {
-    if (count === 0) return;
+    if (!currentDish || count === 0) return;
     addToCart({
       id: currentDish.id,
       name: currentDish.Food,
@@ -90,6 +92,10 @@ export default function SinglePopularDishes() {
   };
 
   const goToCart = () => router.push("/orders");
+
+  const renderItem = ({ item, index }: { item: DishType; index: number }) => (
+    <CarouselItem item={item} index={index} scrollX={scrollX} />
+  );
 
   return (
     <View style={styles.container}>
@@ -116,17 +122,10 @@ export default function SinglePopularDishes() {
           data={populardishes}
           horizontal
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           snapToInterval={ITEM_WIDTH + SPACING}
           decelerationRate="fast"
           contentContainerStyle={styles.carouselContainer}
-          onMomentumScrollEnd={(event) => {
-            const index = Math.round(
-              event.nativeEvent.contentOffset.x / (ITEM_WIDTH + SPACING)
-            );
-            setActiveIndex(index);
-            setCount(0);
-          }}
           onScroll={scrollHandler}
           scrollEventThrottle={16}
           renderItem={renderItem}
@@ -203,9 +202,7 @@ export default function SinglePopularDishes() {
             onPress={handleAddToCart}
             disabled={count === 0}
           >
-            <Text style={styles.Addtext}>
-              {alreadyInCart ? "Add to Cart" : "Add to Cart"}
-            </Text>
+            <Text style={styles.Addtext}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -258,7 +255,7 @@ function CarouselItem({
   );
 }
 
-// Styles remain the same as your original code
+// Styles (unchanged)
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
   header: {
