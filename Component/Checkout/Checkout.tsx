@@ -26,8 +26,8 @@ export default function CheckoutOrder() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      router.push('/orderconfirm');
-    }, 1500); // simulate network delay
+      router.replace('/orderconfirm');
+    }, 1500); 
   };
 
   return (
@@ -113,12 +113,12 @@ const styles = StyleSheet.create({
   priceLabel: {
     color: '#888',
     fontSize: 16,
-    fontFamily: 'Poppins-Regular', // restored font
+    fontFamily: 'Poppins-Regular', 
   },
   priceValue: {
     fontSize: 16,
     color: '#888',
-    fontFamily: 'Poppins-Regular', // restored font
+    fontFamily: 'Poppins-Regular', 
   },
   divider: {
     height: 1,

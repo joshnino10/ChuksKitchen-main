@@ -8,14 +8,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 export default function Explore() {
   return (
     <SafeAreaView style={styles.SafeArea}>
-      <View style={styles.content}>
-
-      
+      <View style={styles.content}>   
         <ExploreHeader/>
         <SearchExplore/>
         <ActiveMenu/>
       </View>
-     
     </SafeAreaView>
   )
 }
