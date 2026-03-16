@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, } from 'react-native'
 import React from 'react'
 import ConfirmOrder from '@/Component/OrderConfirmed/ConfirmOrder'
 import { SafeAreaView } from 'react-native-safe-area-context'
