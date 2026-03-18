@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -17,6 +17,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useCart, CartItem } from "../../context/CartContext";
 
 export default function Cartitem() {
+  const [promoCode, SetPromoCode] = useState('')
   const { cartItems, updateQuantity, removeFromCart, clearCart, totalPrice } =
     useCart();
   const router = useRouter();
@@ -96,6 +97,7 @@ export default function Cartitem() {
 
         <View
           style={{
+            marginTop:20,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
@@ -104,16 +106,22 @@ export default function Cartitem() {
           <View
             style={{
               backgroundColor: "#F6F6F6",
-              width: "60%",
+              width: "70%",
               paddingHorizontal: 25,
-              paddingVertical:20,
+              paddingVertical: 20,
               borderRadius: 10,
             }}
           >
-            <TextInput placeholder="Promo Code" />
+            <TextInput
+              style={{ fontFamily: "MontserratSemiBold", fontSize:16, fontWeight:'600' }}
+              placeholder="Promo Code"
+              placeholderTextColor="#BDBDBD"
+              value={promoCode}
+              onChangeText={SetPromoCode}
+            />
           </View>
 
-          <TouchableOpacity style={styles.btnBackground}>
+          <TouchableOpacity  style={styles.btnBackground}>
             <Text style={styles.apply}>Apply</Text>
           </TouchableOpacity>
         </View>
