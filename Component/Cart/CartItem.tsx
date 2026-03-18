@@ -176,6 +176,12 @@ export default function Cartitem() {
             showsVerticalScrollIndicator={false}
           />
 
+
+
+
+
+          
+
           {/* Checkout Section */}
           <View style={styles.checkoutContainer}>
             <View style={styles.priceRow}>
