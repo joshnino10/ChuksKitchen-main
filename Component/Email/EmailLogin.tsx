@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
+  ActivityIndicator,
   Keyboard,
   ScrollView,
   StyleSheet,
@@ -14,6 +15,7 @@ import CustomButton from '../CustomButton/CustomButton';
 export default function EmailLogin() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const verifyEmail = () => {
@@ -21,16 +23,22 @@ export default function EmailLogin() {
       setError('Please enter your email');
       return;
     }
-  
+
     // ✅ basic email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address');
       return;
     }
-  
+
     setError('');
-    router.push('/(tabs)/home'); // navigate only if valid
+    setLoading(true);
+
+    // simulate API request / navigation delay
+    setTimeout(() => {
+      setLoading(false);
+      router.replace('/(tabs)/home'); // navigate only if valid
+    }, 1000);
   };
 
   return (
@@ -42,18 +50,16 @@ export default function EmailLogin() {
         <Text style={styles.label}>Email Address</Text>
 
         <View style={styles.inputContainer}>
-        
           <TextInput
             style={styles.input}
             placeholder="example@gmail.com"
             keyboardType="email-address"
             placeholderTextColor="#A1A1A1"
             value={email}
-            onChangeText={text => {
+            onChangeText={(text) => {
               setEmail(text);
               if (text) setError('');
             }}
-           
           />
         </View>
 
@@ -61,11 +67,15 @@ export default function EmailLogin() {
         {error.length > 0 && <Text style={styles.error}>{error}</Text>}
 
         <View style={styles.buttonContainer}>
-          <CustomButton
-            onPress={verifyEmail}
-            style={{ borderRadius: 10 }}
-            title="Log in"
-          />
+          {loading ? (
+            <ActivityIndicator size="large" color="#FE8300" />
+          ) : (
+            <CustomButton
+              onPress={verifyEmail}
+              style={{ borderRadius: 10 }}
+              title="Log in"
+            />
+          )}
         </View>
       </ScrollView>
     </TouchableWithoutFeedback>
@@ -74,7 +84,6 @@ export default function EmailLogin() {
 
 const styles = StyleSheet.create({
   container: {
-
     flexGrow: 1,
     justifyContent: 'center',
   },
@@ -93,16 +102,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 12,
     backgroundColor: '#F6F6F6',
-  },
-  countryCode: {
-    fontSize: 16,
-    color: '#555',
-  },
-  divider: {
-    width: 1,
-    height: '60%',
-    backgroundColor: '#ccc',
-    marginHorizontal: 8,
   },
   input: {
     fontFamily: 'MontserratMedium',

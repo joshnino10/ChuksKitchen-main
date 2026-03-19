@@ -30,7 +30,7 @@ export default function Email() {
     }
   
     setError('');
-    router.push('/(auth)/verifyemail'); // navigate only if valid
+    router.push('/(auth)/verifyemail'); 
   };
 
   return (
