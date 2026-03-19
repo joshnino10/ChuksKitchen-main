@@ -17,7 +17,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useCart, CartItem } from "../../context/CartContext";
 
 export default function Cartitem() {
-  const [promoCode, SetPromoCode] = useState('')
+  const [promoCode, SetPromoCode] = useState("");
   const { cartItems, updateQuantity, removeFromCart, clearCart, totalPrice } =
     useCart();
   const router = useRouter();
@@ -38,92 +38,57 @@ export default function Cartitem() {
 
   const renderCartItem = ({ item }: { item: CartItem }) => {
     return (
-      <View>
-        <View style={styles.cartItem}>
-          <View>
-            <Image source={item.image} style={styles.itemImage} />
+      <View style={styles.cartItem}>
+        <Image source={item.image} style={styles.itemImage} />
+
+        <View style={styles.itemDetails}>
+          <View style={styles.rowBetween}>
+            <Text style={styles.itemName}>{item.name}</Text>
+            <Text style={styles.itemPrice}>{item.price}</Text>
           </View>
 
-          <View style={styles.itemDetails}>
-            <View style={styles.rowBetween}>
-              <Text style={styles.itemName}>{item.name}</Text>
-              <Text style={styles.itemPrice}>{item.price}</Text>
+          <View style={styles.quantityContainer}>
+            {/* Remove */}
+            <View style={styles.Removedetails}>
+              <TouchableOpacity onPress={() => removeFromCart(item.id)}>
+                <Image
+                  style={{ width: 16, height: 18 }}
+                  source={require("../../assets/images/delete icon.png")}
+                />
+              </TouchableOpacity>
+
+              <Text style={styles.RemoveText}>Remove</Text>
             </View>
 
-            <View style={styles.quantityContainer}>
-              {/* Remove */}
-              <View style={styles.Removedetails}>
-                <TouchableOpacity onPress={() => removeFromCart(item.id)}>
-                  <Image
-                    style={{ width: 16, height: 18 }}
-                    source={require("../../assets/images/delete icon.png")}
-                  />
-                </TouchableOpacity>
+            {/* Counter */}
+            <View style={styles.CountContainer}>
+              <TouchableOpacity
+                onPress={() => {
+                  if (item.quantity <= 1) {
+                    removeFromCart(item.id);
+                  } else {
+                    updateQuantity(item.id, item.quantity - 1);
+                  }
+                }}
+              >
+                <Image
+                  style={styles.counterIcon}
+                  source={require("../../assets/images/minus.png")}
+                />
+              </TouchableOpacity>
 
-                <Text style={styles.RemoveText}>Remove</Text>
-              </View>
+              <Text>{item.quantity}</Text>
 
-              {/* Counter */}
-              <View style={styles.CountContainer}>
-                <TouchableOpacity
-                  onPress={() => {
-                    if (item.quantity <= 1) {
-                      removeFromCart(item.id);
-                    } else {
-                      updateQuantity(item.id, item.quantity - 1);
-                    }
-                  }}
-                >
-                  <Image
-                    style={styles.counterIcon}
-                    source={require("../../assets/images/minus.png")}
-                  />
-                </TouchableOpacity>
-
-                <Text>{item.quantity}</Text>
-
-                <TouchableOpacity
-                  onPress={() => updateQuantity(item.id, item.quantity + 1)}
-                >
-                  <Image
-                    style={styles.counterIcon}
-                    source={require("../../assets/images/plus.png")}
-                  />
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                onPress={() => updateQuantity(item.id, item.quantity + 1)}
+              >
+                <Image
+                  style={styles.counterIcon}
+                  source={require("../../assets/images/plus.png")}
+                />
+              </TouchableOpacity>
             </View>
           </View>
-        </View>
-
-        <View
-          style={{
-            marginTop:20,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "#F6F6F6",
-              width: "70%",
-              paddingHorizontal: 25,
-              paddingVertical: 20,
-              borderRadius: 10,
-            }}
-          >
-            <TextInput
-              style={{ fontFamily: "MontserratSemiBold", fontSize:16, fontWeight:'600' }}
-              placeholder="Promo Code"
-              placeholderTextColor="#BDBDBD"
-              value={promoCode}
-              onChangeText={SetPromoCode}
-            />
-          </View>
-
-          <TouchableOpacity  style={styles.btnBackground}>
-            <Text style={styles.apply}>Apply</Text>
-          </TouchableOpacity>
         </View>
       </View>
     );
@@ -167,22 +132,53 @@ export default function Cartitem() {
         </View>
       ) : (
         <>
-          {/* Cart Items */}
+          {/* Cart List + Promo */}
           <FlatList
             data={cartItems}
             renderItem={renderCartItem}
             keyExtractor={(item) => item.id.toString()}
             contentContainerStyle={styles.cartList}
             showsVerticalScrollIndicator={false}
+            ListFooterComponent={
+              <View
+                style={{
+                  marginTop: 20,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                 
+                }}
+              >
+                <View
+                  style={{
+                    backgroundColor: "#F6F6F6",
+                    width: "70%",
+                    paddingHorizontal: 25,
+                    paddingVertical: 20,
+                    borderRadius: 10,
+                  }}
+                >
+                  <TextInput
+                    style={{
+                      fontFamily: "MontserratSemiBold",
+                      fontSize: 16,
+                      fontWeight: "600",
+                    }}
+                    placeholder="Promo Code"
+                    placeholderTextColor="#BDBDBD"
+                    value={promoCode}
+                    onChangeText={SetPromoCode}
+                  />
+                </View>
+
+                <TouchableOpacity style={styles.btnBackground}>
+                  <Text style={styles.apply}>Apply</Text>
+                </TouchableOpacity>
+              </View>
+            }
           />
 
-
-
-
-
-          
-
-          {/* Checkout Section */}
+          {/* Checkout */}
           <View style={styles.checkoutContainer}>
             <View style={styles.priceRow}>
               <Text style={styles.priceLabel}>Subtotal</Text>
@@ -237,7 +233,7 @@ const styles = StyleSheet.create({
 
   cartList: {
     paddingHorizontal: 16,
-    paddingBottom: 200,
+    paddingBottom: 300, // important fix
   },
 
   cartItem: {
@@ -261,7 +257,6 @@ const styles = StyleSheet.create({
 
   rowBetween: {
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
   },
 
@@ -275,7 +270,6 @@ const styles = StyleSheet.create({
     fontFamily: "MontserratSemiBold",
     fontSize: 18,
     fontWeight: "bold",
-    color: "#000",
   },
 
   quantityContainer: {
@@ -368,24 +362,18 @@ const styles = StyleSheet.create({
   },
 
   emptyCartContainer: {
-    fontFamily: "poppinsSemiBold",
     flex: 1,
-    paddingHorizontal: 20,
-    alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
   },
 
   emptyCartText: {
-    fontFamily: "poppinsSemiBold",
-    fontWeight: "600",
     fontSize: 24,
     marginTop: 10,
+    fontWeight: "600",
   },
 
   emptyCartSubText: {
-    fontFamily: "poppinsMedium",
-    fontWeight: "600",
     fontSize: 18,
     color: "#9B9A9A",
     marginTop: 10,
@@ -394,14 +382,12 @@ const styles = StyleSheet.create({
 
   shopButton: {
     marginTop: 20,
-    fontFamily: "poppinsMedium",
     backgroundColor: "#FE8300",
     padding: 12,
     borderRadius: 10,
   },
 
   shopButtonText: {
-    fontFamily: "poppinsSemiBold",
     fontSize: 20,
     color: "#fff",
     fontWeight: "bold",
@@ -416,7 +402,7 @@ const styles = StyleSheet.create({
 
   apply: {
     color: "#FE8300",
-    fontFamily: "MontserrtaSemiBold",
+    fontFamily: "MontserratSemiBold",
     fontSize: 16,
     fontWeight: "600",
   },
