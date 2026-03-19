@@ -1,23 +1,26 @@
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Image, Platform, StyleSheet } from 'react-native';
+import { Image, Platform, StyleSheet, View } from 'react-native';
 
 export default function Tablayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-         tabBarActiveTintColor: '#FE8300',
-         tabBarInactiveTintColor: '#D3D3D3',
+        tabBarActiveTintColor: '#FE8300',
+        tabBarInactiveTintColor: '#D3D3D3',
 
+        // Blur background
         tabBarBackground: () => (
           <BlurView
-            intensity={10}
-            tint="light"
-            style={styles.BlurView}
-          />
+           intensity={Platform.OS === 'ios'? 10: 9}
+           tint={Platform.OS === 'ios'? 'light': 'default'}
+           experimentalBlurMethod={Platform.OS === 'android'? 'dimezisBlurView':undefined}
+           style={styles.BlurView}
+           />
         ),
+        
 
         tabBarStyle: {
           position: "absolute",
@@ -25,9 +28,9 @@ export default function Tablayout() {
           bottom: Platform.OS === 'ios'? 20:17,
           height: Platform.OS === 'android'? 75:73,
           borderRadius: 2000,
+          backgroundColor:'#F2EBE333',
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#F2EBE333",
           paddingTop: Platform.OS === 'ios'? 10:5,
           borderWidth: 0.3,
 
@@ -39,7 +42,7 @@ export default function Tablayout() {
           shadowOpacity: 0.1,
           shadowRadius: 4,
 
-          elevation: 10,
+          elevation: 2,
         },
 
         tabBarIconStyle: {
@@ -52,71 +55,70 @@ export default function Tablayout() {
           fontSize:8,
           marginTop:1,
           fontWeight:'400',
-
         }
       }}
     >
+      {/* Your Tab Screens */}
       <Tabs.Screen 
         name="home"
         options={{
           title:'Home',
           tabBarIcon: ({focused}) => (
             <Image 
-            source={
-               focused? require('../../assets/images/active home icon.png'):
-               require('../../assets/images/in active home icon.png')
-               
-            }
-             style={styles.icon}
-             resizeMode="contain"
+              source={
+                focused ? require('../../assets/images/active home icon.png') :
+                require('../../assets/images/in active home icon.png')
+              }
+              style={styles.icon}
+              resizeMode="contain"
             />
           )
         }}
-       />
+      />
       <Tabs.Screen
-       name="explore" 
+        name="explore" 
         options={{
           title:'Explore',
           tabBarIcon: ({focused}) => (
             <Image
-             source={
-              focused? require('../../assets/images/explore active icon.png'):
-              require('../../assets/images/explore inactive icon.png')
-
-             } 
-             style={styles.icon}
-             resizeMode="contain"/>
+              source={
+                focused ? require('../../assets/images/explore active icon.png') :
+                require('../../assets/images/explore inactive icon.png')
+              } 
+              style={styles.icon}
+              resizeMode="contain"
+            />
           )
-        }}/>
-
+        }}
+      />
       <Tabs.Screen 
-      name="orders" 
-      options={{
-        title:'Orders',
-        tabBarIcon: ({focused})=>(
-          <Image source={
-            focused? require('../../assets/images/order active icon.png'):
-            require('../../assets/images/order inactive icon.png')
-          }
-          style={styles.icon}
-          resizeMode="contain"/>
-        )
-      }}/>
-
+        name="orders" 
+        options={{
+          title:'Orders',
+          tabBarIcon: ({focused})=>(
+            <Image source={
+              focused ? require('../../assets/images/order active icon.png') :
+              require('../../assets/images/order inactive icon.png')
+            }
+            style={styles.icon}
+            resizeMode="contain"/>
+          )
+        }}
+      />
       <Tabs.Screen
-       name="profile"
+        name="profile"
         options={{
           title: 'Profile',
           tabBarIcon: ({focused})=>(
-            <Image source={focused?
-              require('../../assets/images/active profile icon.png'):
+            <Image source={
+              focused ? require('../../assets/images/active profile icon.png') :
               require('../../assets/images/inactive profile icon.png')
             }
             style={styles.icon}
             resizeMode="contain"/>
           )
         }}
-       />
+      />
     </Tabs>
   );
 }
@@ -128,6 +130,7 @@ const styles = StyleSheet.create({
     left:0,
     right:0,
     bottom:0,
+    backgroundColor:'#F2EBE333',
     borderRadius:2000,
     overflow:'hidden',
   },
