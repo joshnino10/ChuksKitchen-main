@@ -1,14 +1,19 @@
-import { useRouter } from 'expo-router'
-import React from 'react'
-import { Image, StatusBar, StyleSheet, Text, View } from 'react-native'
-import CustomButton from '../CustomButton/CustomButton'
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Image, StatusBar, StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import CustomButton from '../CustomButton/CustomButton';
 
 export default function VerificationSuccesfulScreen() {
-  const router = useRouter()
+  const router = useRouter();
+  const [loading, setLoading] = useState(false); // ✅ loading state
 
   const handleStartOrdering = () => {
-    router.replace('/(tabs)/home') 
-  }
+    setLoading(true); // show spinner
+    setTimeout(() => {
+      setLoading(false);
+      router.replace('/(tabs)/home'); // navigate after delay
+    }, 3000); // simulate small delay
+  };
 
   return (
     <>
@@ -29,11 +34,15 @@ export default function VerificationSuccesfulScreen() {
           </Text>
 
           <View style={styles.buttonContainer}>
-            <CustomButton
-             style={{paddingHorizontal:16}}
-              title="Start Ordering"
-              onPress={handleStartOrdering}
-            />
+            {loading ? (
+              <ActivityIndicator size="large" color="#FE8300" />
+            ) : (
+              <CustomButton
+                style={{ paddingHorizontal: 16 }}
+                title="Start Ordering"
+                onPress={handleStartOrdering}
+              />
+            )}
           </View>
         </View>
 
@@ -44,7 +53,7 @@ export default function VerificationSuccesfulScreen() {
         </View>
       </View>
     </>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -53,7 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 24,
     paddingBottom: 30,
-
     backgroundColor: '#FFFFFF',
   },
 
@@ -99,4 +107,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#D3D3D3',
   },
-})
+});
