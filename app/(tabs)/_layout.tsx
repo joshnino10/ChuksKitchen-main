@@ -13,7 +13,7 @@ export default function Tablayout() {
 
         tabBarBackground: () => (
           <BlurView
-            intensity={9}
+            intensity={10}
             tint="light"
             style={styles.BlurView}
           />

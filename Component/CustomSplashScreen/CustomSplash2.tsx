@@ -1,16 +1,34 @@
-import { Image, StyleSheet, View } from "react-native";
-import React, { useEffect } from "react";
+import { Image, StyleSheet, View, Animated } from "react-native";
+import React, { useEffect, useRef } from "react";
 import { useRouter } from "expo-router";
 
 export default function CustomSplash2() {
   const router = useRouter();
+  const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      router.replace('/(auth)'); // change to your next screen
-    }, 5000); // 5000ms = 5 seconds
+    // Animation loop (fade in & out)
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacity, {
+          toValue: 0.3,
+          duration: 800,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
 
-    return () => clearTimeout(timer); // cleanup
+    // Navigate after 5 seconds
+    const timer = setTimeout(() => {
+      router.replace("/(auth)");
+    }, 5000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -19,6 +37,12 @@ export default function CustomSplash2() {
         style={styles.logo}
         source={require("../../assets/images/product logo.png")}
       />
+
+      {/* Animated Loading */}
+      <Animated.Image
+        style={[styles.loadingstate, { opacity }]}
+        source={require("../../assets/images/loading frame.png")}
+      />
     </View>
   );
 }
@@ -26,7 +50,7 @@ export default function CustomSplash2() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FE8300", // prevents white flash
+    backgroundColor: "#FE8300",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -35,5 +59,11 @@ const styles = StyleSheet.create({
     width: 242,
     height: 172,
     resizeMode: "cover",
+  },
+
+  loadingstate: {
+    marginTop: 50,
+    width: 80,
+    height: 12,
   },
 });
