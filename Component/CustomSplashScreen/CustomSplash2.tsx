@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
   loadingstate: {
     marginTop: 50,
     width: 80,
-    height: 12,
+    height: 13,
   },
 });
