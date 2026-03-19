@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   Image,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -31,6 +32,7 @@ export default function Index() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle='dark-content' backgroundColor='white'  />
    
       <View style={styles.header}>
         <Image

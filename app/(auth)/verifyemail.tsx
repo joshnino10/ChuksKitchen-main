@@ -9,6 +9,7 @@ import {
   View,
   Text,
   ActivityIndicator,
+  StatusBar
 } from "react-native";
 import { OtpInput } from "react-native-otp-entry";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -61,6 +62,7 @@ export default function VerifyEmail() {
 
   return (
     <SafeAreaView style={styles.container}>
+       <StatusBar barStyle='dark-content' backgroundColor='white'  />
      
      <View>
 
