@@ -16,13 +16,21 @@ export default function Email() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const verifyNumber = () => {
+  const verifyEmail = () => {
     if (!email) {
       setError('Please enter your email');
       return;
     }
+  
+    // ✅ basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+  
     setError('');
-    router.push('/(auth)/verifyemail');
+    router.push('/(auth)/verifyemail'); // navigate only if valid
   };
 
   return (
@@ -54,7 +62,7 @@ export default function Email() {
 
         <View style={styles.buttonContainer}>
           <CustomButton
-            onPress={verifyNumber}
+            onPress={verifyEmail}
             style={{ borderRadius: 25 }}
             title="Verify Email Address"
           />

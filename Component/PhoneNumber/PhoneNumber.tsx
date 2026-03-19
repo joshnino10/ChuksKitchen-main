@@ -1,19 +1,21 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
-    Keyboard,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableWithoutFeedback,
-    View,
+  ActivityIndicator,
+  Keyboard,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 import CustomButton from '../CustomButton/CustomButton';
 
-export default function PhoneNumber() {
+export default function PhoneNumberLogin() {
   const [number, setNumber] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const verifyNumber = () => {
@@ -21,8 +23,21 @@ export default function PhoneNumber() {
       setError('Please enter your mobile number');
       return;
     }
+  
+    // ✅ validation: must be exactly 10 digits after +234
+    if (number.length !== 10) {
+      setError('Mobile number must be 10 digits');
+      return;
+    }
+  
     setError('');
-    router.push('/(auth)/verifynumber');
+    setLoading(true);
+  
+    // simulate API request
+    setTimeout(() => {
+      setLoading(false);
+      router.replace('/(auth)/verifynumber'); // navigate only if valid
+    }, 2000);
   };
 
   return (
@@ -42,7 +57,7 @@ export default function PhoneNumber() {
             keyboardType="phone-pad"
             placeholderTextColor="#A1A1A1"
             value={number}
-            onChangeText={text => {
+            onChangeText={(text) => {
               setNumber(text);
               if (text) setError('');
             }}
@@ -50,15 +65,18 @@ export default function PhoneNumber() {
           />
         </View>
 
-        {/* Error message */}
         {error.length > 0 && <Text style={styles.error}>{error}</Text>}
 
         <View style={styles.buttonContainer}>
-          <CustomButton
-            onPress={verifyNumber}
-            style={{ borderRadius: 25 }}
-            title="Verify Phone Number"
-          />
+          {loading ? (
+            <ActivityIndicator size="large" color="#FE8300" />
+          ) : (
+            <CustomButton
+              onPress={verifyNumber}
+              style={{ borderRadius: 25 }}
+              title="Verify Phone Number"
+            />
+          )}
         </View>
       </ScrollView>
     </TouchableWithoutFeedback>
@@ -67,14 +85,12 @@ export default function PhoneNumber() {
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
     flexGrow: 1,
     justifyContent: 'center',
   },
   label: {
     fontFamily: 'MontserratMedium',
     fontSize: 16,
-    fontWeight: '500',
     marginBottom: 8,
     color: '#000000',
   },
@@ -88,7 +104,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
   },
   countryCode: {
-    fontFamily:'MontserratMedium',
+    fontFamily: 'MontserratMedium',
     fontSize: 16,
     color: '#A1A1A1',
   },

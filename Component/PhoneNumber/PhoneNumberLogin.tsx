@@ -23,14 +23,20 @@ export default function PhoneNumberLogin() {
       setError('Please enter your mobile number');
       return;
     }
-
+  
+    // ✅ validation: must be exactly 10 digits after +234
+    if (number.length !== 10) {
+      setError('Mobile number must be 10 digits');
+      return;
+    }
+  
     setError('');
     setLoading(true);
-
+  
     // simulate API request
     setTimeout(() => {
       setLoading(false);
-      router.replace('/(tabs)/home');
+      router.replace('/(tabs)/home'); // navigate only if valid
     }, 2000);
   };
 

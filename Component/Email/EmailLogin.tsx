@@ -1,13 +1,13 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
-    Keyboard,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableWithoutFeedback,
-    View,
+  Keyboard,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 import CustomButton from '../CustomButton/CustomButton';
 
@@ -16,13 +16,21 @@ export default function EmailLogin() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const verifyNumber = () => {
+  const verifyEmail = () => {
     if (!email) {
       setError('Please enter your email');
       return;
     }
+  
+    // ✅ basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+  
     setError('');
-    router.push('/(tabs)/home');
+    router.push('/(tabs)/home'); // navigate only if valid
   };
 
   return (
@@ -54,7 +62,7 @@ export default function EmailLogin() {
 
         <View style={styles.buttonContainer}>
           <CustomButton
-            onPress={verifyNumber}
+            onPress={verifyEmail}
             style={{ borderRadius: 10 }}
             title="Log in"
           />
