@@ -120,6 +120,7 @@ export default function AccountSections() {
                   style={[
                     styles.row,
                     isHelpSection && {
+                      
                       borderBottomColor: "white",
                     },
                     i === section.items.length - 1 && styles.lastRow,
