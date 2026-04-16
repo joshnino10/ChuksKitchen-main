@@ -13,7 +13,8 @@ import {
 interface SectionItem {
   icon: any;
   title: string;
-  subtitle: string;
+  subtitle?: string;
+  backgroundColor?: string;
   type?: "switch";
   value?: boolean;
   onValueChange?: (value: boolean) => void;
@@ -76,52 +77,104 @@ export default function AccountSections() {
           onValueChange: setNotifications,
         },
       ],
-    },   
+    },
 
+    {
+      SectionsName: "Help & Support",
+      items: [
+        {
+          icon: require("../../assets/images/help center.png"),
+          title: "Help Center",
+        },
+        {
+          icon: require("../../assets/images/live chat.png"),
+          title: "Live Chat",
+        },
+        {
+          icon: require("../../assets/images/terms .png"),
+          title: "Terms and Policies",
+        },
+      ],
+    },
   ];
-
-
 
   return (
     <View style={styles.Container}>
-      {sections.map((section, index) => (
-        <View key={index}>
-          <Text style={styles.SectionTitle}>{section.SectionsName}</Text>
+      {sections.map((section, index) => {
+        const isHelpSection = section.SectionsName === "Help & Support";
 
-          <View style={styles.sectionCard}>
-            {section.items.map((item, i) => (
-              <TouchableOpacity
-                key={i}
-                activeOpacity={item.type === "switch" ? 1 : 0.7} 
-                style={[
-                  styles.row,
-                  i === section.items.length - 1 && styles.lastRow,
-                ]}
-              >
-                <Image source={item.icon} style={styles.icon} />
+        return (
+          <View key={index}>
+            <Text style={styles.SectionTitle}>{section.SectionsName}</Text>
 
-                <View style={styles.textContainer}>
-                  <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.subtitle}>{item.subtitle}</Text>
-                </View>
-
-                {item.type === "switch" ? (
-                  <Switch
-                    value={item.value!} 
-                    onValueChange={item.onValueChange!} 
-                    trackColor={{ false: "#E5E5E5", true: "#1A934E" }}
-                    thumbColor={item.value ? "#FFFFFF" : "#F5F5F5"}
-                    ios_backgroundColor="#E5E5E5"
-                    style={{ transform: [{ scale: 0.6 }] }} 
+            <View
+              style={[
+                styles.sectionCard,
+                isHelpSection && { backgroundColor: "#FE8300D9" },
+              ]}
+            >
+              {section.items.map((item, i) => (
+                <TouchableOpacity
+                  key={i}
+                  activeOpacity={item.type === "switch" ? 1 : 0.7}
+                  style={[
+                    styles.row,
+                    isHelpSection && {
+                      borderBottomColor: "rgba(255,255,255,0.3)",
+                    },
+                    i === section.items.length - 1 && styles.lastRow,
+                  ]}
+                >
+                  <Image
+                    source={item.icon}
+                    style={[
+                      styles.icon,
+                      isHelpSection && { tintColor: "#FFFFFF" },
+                    ]}
                   />
-                ) : (
-                  <Ionicons name="chevron-forward" size={22} color="black" />
-                )}
-              </TouchableOpacity>
-            ))}
+
+                  <View style={styles.textContainer}>
+                    <Text
+                      style={[
+                        styles.title,
+                        isHelpSection && { color: "#FFFFFF" },
+                      ]}
+                    >
+                      {item.title}
+                    </Text>
+
+                    <Text
+                      style={[
+                        styles.subtitle,
+                        isHelpSection && { color: "#FFFFFF" },
+                      ]}
+                    >
+                      {item.subtitle}
+                    </Text>
+                  </View>
+
+                  {item.type === "switch" ? (
+                    <Switch
+                      value={item.value!}
+                      onValueChange={item.onValueChange!}
+                      trackColor={{ false: "#E5E5E5", true: "#1A934E" }}
+                      thumbColor={item.value ? "#FFFFFF" : "#F5F5F5"}
+                      ios_backgroundColor="#E5E5E5"
+                      style={{ transform: [{ scale: 0.6 }] }}
+                    />
+                  ) : (
+                    <Ionicons
+                      name="chevron-forward"
+                      size={22}
+                      color={isHelpSection ? "#FFFFFF" : "black"}
+                    />
+                  )}
+                </TouchableOpacity>
+              ))}
+            </View>
           </View>
-        </View>
-      ))}
+        );
+      })}
     </View>
   );
 }
@@ -147,13 +200,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     gap: 11,
 
-    // iOS shadow
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 17 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
 
-    // Android shadow
     elevation: 8,
   },
 

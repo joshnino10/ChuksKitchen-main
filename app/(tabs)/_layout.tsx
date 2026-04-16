@@ -11,10 +11,10 @@ export default function Tablayout() {
         tabBarActiveTintColor: '#FE8300',
         tabBarInactiveTintColor: '#D3D3D3',
 
-        // Blur background
+       
         tabBarBackground: () => (
           <BlurView
-           intensity={Platform.OS === 'ios'? 10: 9}
+           intensity={Platform.OS === 'ios'? 10 : 9}
            tint={Platform.OS === 'ios'? 'light': 'default'}
            experimentalBlurMethod={Platform.OS === 'android'? 'dimezisBlurView':undefined}
            style={styles.BlurView}
