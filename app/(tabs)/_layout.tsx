@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Image, Platform, StyleSheet, View } from 'react-native';
+import { Image, Platform, StyleSheet,  } from 'react-native';
 
 export default function Tablayout() {
   return (
