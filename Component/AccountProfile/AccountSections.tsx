@@ -20,7 +20,7 @@ interface SectionItem {
   onValueChange?: (value: boolean) => void;
 }
 
-// Type for each section
+
 interface Section {
   SectionsName: string;
   items: SectionItem[];
@@ -223,8 +223,8 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    width: 38,
-    height: 38,
+    width: 35,
+    height: 35,
     marginRight: 12,
   },
 
