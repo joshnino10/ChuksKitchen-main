@@ -9,7 +9,7 @@ import {
   Switch,
 } from "react-native";
 
-// Type for each item
+
 interface SectionItem {
   icon: any;
   title: string;
