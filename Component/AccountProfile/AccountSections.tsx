@@ -120,7 +120,7 @@ export default function AccountSections() {
                   style={[
                     styles.row,
                     isHelpSection && {
-                      borderBottomColor: "rgba(255,255,255,0.3)",
+                      borderBottomColor: "white",
                     },
                     i === section.items.length - 1 && styles.lastRow,
                   ]}
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 14,
     paddingHorizontal: 12,
-    borderBottomWidth: 0.5,
+    borderBottomWidth:1.2,
     borderBottomColor: "#E5E5E5",
   },
 
@@ -232,12 +232,13 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 16,
+    fontFamily:'PoppinsMedium',
+    fontSize: 14,
     fontWeight: "500",
   },
 
   subtitle: {
-    fontSize: 13,
-    color: "gray",
+    fontSize: 12,
+    color: "#868181",
   },
 });

@@ -1,5 +1,6 @@
 import AccountProfile from '@/Component/AccountProfile/AccountProfile'
 import AccountSections from '@/Component/AccountProfile/AccountSections'
+import Logout from '@/Component/AccountProfile/Logout'
 import React from 'react'
 import { ScrollView, StyleSheet, } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -12,6 +13,7 @@ export default function Profile() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <AccountProfile/>
         <AccountSections/>
+        <Logout/>
       </ScrollView>
     </SafeAreaView>
   )
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#FFFFFF'
   },
   scrollContent:{
-    paddingBottom: 80,
+    paddingBottom: 100,
  
   },
 })
