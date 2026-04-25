@@ -48,7 +48,7 @@ export default function AccountSections() {
           icon: require("../../assets/images/address icon.png"),
           title: "Addresses",
           subtitle: "Delivery location",
-        },
+        }, 
         {
           icon: require("../../assets/images/privacy icon.png"),
           title: "Privacy",
